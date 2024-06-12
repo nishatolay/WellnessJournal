@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mental Health Diary</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'NewEntry')" id="defaultOpen">New Entry</button>
+        <button class="tablinks" onclick="openTab(event, 'PreviousEntries')">Previous Entries</button>
+    </div>
+
+    <div id="NewEntry" class="tabcontent">
+        <h1>New Diary Entry</h1>
+        <h2>Daily Quote</h2>
+        <p>{{ quote }}</p>
+        <form action="/" method="post">
+            <label for="date">Enter Today's Date (ex. Jan 1, 2000):</label><br>
+            <input type="text" id="date" name="date" required><br>
+            <label for="feeling">Enter how you are feeling:</label><br>
+            <input type="text" id="feeling" name="feeling" required><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div id="PreviousEntries" class="tabcontent">
+        <h1>Previous Entries</h1>
+        {% if entries %}
+            <ul>
+            {% for entry in entries %}
+                <li><strong>{{ entry.date }}:</strong> {{ entry.feeling }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No entries yet.</p>
+        {% endif %}
+    </div>
+
+    <script>
+        // Open the default tab
+        document.getElementById("defaultOpen").click();
+    </script>
+</body>
+</html>
