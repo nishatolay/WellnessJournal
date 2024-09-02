@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mental Health Diary</title>
+    <title>The Wellness Journal</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
 <body>
     <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'NewEntry')" id="defaultOpen">New Entry</button>
-        <button class="tablinks" onclick="openTab(event, 'PreviousEntries')">Previous Entries</button>
+        <button class="tablinks" onclick="openTab(event, 'new_entry')" id="defaultOpen">New Entry</button>
+        <button class="tablinks" onclick="openTab(event, 'previous_entries')">Previous Entries</button>
     </div>
 
-    <div id="NewEntry" class="tabcontent">
+    <div id="new_entry" class="tabcontent">
         <h1>New Diary Entry</h1>
         <h2>Daily Quote</h2>
         <p>{{ quote }}</p>
@@ -24,7 +24,7 @@
         </form>
     </div>
 
-    <div id="PreviousEntries" class="tabcontent">
+    <div id="previous_entries" class="tabcontent">
         <h1>Previous Entries</h1>
         {% if entries %}
             <ul>
